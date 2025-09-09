@@ -16,12 +16,11 @@ class AbrigoAnimais {
       const lista = [];
       const pessoaCount = { 1: 0, 2: 0 };
 
-      // Valida duplicados e transforma em arrays
       const p1 = brinquedos1.split(',').map(s => s.trim());
       const p2 = brinquedos2.split(',').map(s => s.trim());
       const animaisOrdem = ordemAnimais.split(',').map(s => s.trim());
 
-      // Checa brinquedos duplicados
+      
       if (new Set(p1).size !== p1.length || new Set(p2).size !== p2.length) {
         return { erro: 'Brinquedo inválido' };
       }
@@ -68,11 +67,11 @@ class AbrigoAnimais {
   }
 
   verificaBrinquedos(animal, brinquedosPessoa) {
-    // Para cães e jabutis (Loco não importa a ordem)
+    
     if (animal.tipo === 'jabuti') {
       return animal.brinquedos.every(b => brinquedosPessoa.includes(b));
     }
-    // Para cães, ordem importa
+    
     let index = 0;
     for (let b of brinquedosPessoa) {
       if (b === animal.brinquedos[index]) index++;
@@ -81,7 +80,7 @@ class AbrigoAnimais {
   }
 
   verificaBrinquedosGato(animal, brinquedosPessoa) {
-    // Ordem exata para gatos
+    
     if (brinquedosPessoa.length < animal.brinquedos.length) return false;
     let i = 0;
     for (let b of brinquedosPessoa) {
